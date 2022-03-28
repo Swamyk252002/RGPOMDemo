@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite">
+    <test name="RedGreen AppManager Functionality Verification RemoveUAppsNotExist">
+        <classes>
+            <class name="com.RedGreen.RunnerClasses.ZRunnerClassRedGreen_AppManager_And_SpeedBooster"/>    
+        </classes>
+     </test> 
+     <test name="RedGreen AppManager Functionality Verification AppManagerRemoveUApp">
+        <classes>
+         <class name="com.RedGreen.RunnerClasses.ZRunnerClassRedGreen_SaveBattery_And_AppLock"></class>
+        </classes>
+    </test>  
+    <test name="RedGreen AppManager Functionality Verification AppManagerRemoveUApps">
+        <classes>
+         <class name="com.RedGreen.RunnerClasses.ZRunnerClassSettings"></class>
+        </classes>
+    </test>  
+</suite>    

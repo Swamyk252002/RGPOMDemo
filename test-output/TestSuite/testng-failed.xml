@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [TestSuite]">
+  <test thread-count="5" name="RedGreen AppManager Functionality Verification AppManagerRemoveUApp(failed)">
+    <classes>
+      <class name="com.RedGreen.RunnerClasses.ZRunnerClassRedGreen_SaveBattery_And_AppLock">
+        <methods>
+          <include name="removeunsecureapp"/>
+        </methods>
+      </class> <!-- com.RedGreen.RunnerClasses.ZRunnerClassRedGreen_SaveBattery_And_AppLock -->
+    </classes>
+  </test> <!-- RedGreen AppManager Functionality Verification AppManagerRemoveUApp(failed) -->
+  <test thread-count="5" name="RedGreen AppManager Functionality Verification AppManagerRemoveUApps(failed)">
+    <classes>
+      <class name="com.RedGreen.RunnerClasses.ZRunnerClassSettings">
+        <methods>
+          <include name="Preferences"/>
+        </methods>
+      </class> <!-- com.RedGreen.RunnerClasses.ZRunnerClassSettings -->
+    </classes>
+  </test> <!-- RedGreen AppManager Functionality Verification AppManagerRemoveUApps(failed) -->
+</suite> <!-- Failed suite [TestSuite] -->

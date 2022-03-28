@@ -1,0 +1,96 @@
+package com.ExtentReports;
+
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+public class ExtentReportAppLockChangePassword {
+
+	ExtentReports report;
+	ExtentSparkReporter spark;
+	ExtentTest Test;
+	AndroidDriver<AndroidElement> driver;
+
+	public void exreportopen() {
+		report = new ExtentReports();
+		spark = new ExtentSparkReporter(System.getProperty("user.dir") + "/test-results/AppLockChangePassWord.html");
+		report.attachReporter(spark);
+		Test = report.createTest("RedGreen AppLock Change Password Functionality Testing");
+	}
+
+	public void exreportclose() {
+		report.flush();
+	}
+
+	public static String getScreenshot(AndroidDriver<AndroidElement> driver) throws Exception {
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		String path = System.getProperty("user.dir") + "/Screenshots/" + System.currentTimeMillis() + ".png";
+		File finalDest = new File(path);
+		FileUtils.copyFile(src, finalDest);
+		return path;
+	}
+
+	public void redgreenappopen(AndroidDriver<AndroidElement> driver) throws Exception {
+		Test.pass("RedGreen App Opened Sucessfully");
+	}
+
+	public void splashscreenverification(AndroidDriver<AndroidElement> driver) throws Exception {
+		Test.pass("Splash Screens Verified Sucessfully");
+	}
+
+	public void allowphotosmediaandphonespermissionsallow(AndroidDriver<AndroidElement> driver) throws Exception {
+		Test.pass("Permissions allowed Sucessfully and navigated to dashboard screen");
+	}
+
+	public void applockclickpass(AndroidDriver<AndroidElement> driver) throws Exception {
+		Test.pass("Clicked on AppLock Module and Successfully navigated to AppLock Home Screen");
+	}
+
+	public void applockclickfail(AndroidDriver<AndroidElement> driver) throws Exception {
+		String temp = getScreenshot(driver);
+		Test.fail("AppLock not exists - some internal error",
+				MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+	}
+
+	public void applockchangepasswordtextverifypass(AndroidDriver<AndroidElement> driver) throws Exception {
+		Test.pass("AppLock Change Password Button verified Successfully");
+	}
+
+	public void applockchangepasswordtextverifyfail(AndroidDriver<AndroidElement> driver) throws Exception {
+		String temp = getScreenshot(driver);
+		Test.fail("AppLock Change Password Button verification failed - some internal error",
+				MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+	}
+
+	public void applockcchangepasswordpass(AndroidDriver<AndroidElement> driver) throws Exception {
+		Test.pass("AppLock Change Password Functionality Working as expected ");
+	}
+
+	public void applockchangepasswordfail(AndroidDriver<AndroidElement> driver) throws Exception {
+		String temp = getScreenshot(driver);
+		Test.fail("AppLock Change Password Functionality Failed - some internal error",
+				MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+	}
+	public void applockcwithoupinpass(AndroidDriver<AndroidElement> driver) throws Exception {
+		Test.pass("AppLock invalid pin entry verified Successfully ");
+	}
+
+	public void applockwithoutpinfail(AndroidDriver<AndroidElement> driver) throws Exception {
+		String temp = getScreenshot(driver);
+		Test.fail("AppLock invalid pin verification failed - some internal error",
+				MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+	}
+}
+
+
